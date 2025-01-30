@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>プログラマ向けタイピング練習</title>
+    <style>
+        body { font-family: Arial, sans-serif; text-align: center; padding: 20px; }
+        #target-text { font-size: 20px; margin: 20px; }
+        #typing-input { width: 80%; padding: 10px; font-size: 18px; }
+        #result { font-size: 18px; margin-top: 10px; }
+    </style>
+</head>
+<body>
+    <h1>タイピング練習（プログラマ向け）</h1>
+    <p id="target-text"></p>
+    <input type="text" id="typing-input" autofocus>
+    <p id="result"></p>
+
+    <script>
+        const texts = [
+            'console.log("Hello, World!");',
+            'print("Hello, World!")',
+            'int main() { return 0; }',
+            'def hello(): print("Hello")',
+            'git commit -m "Initial commit"',
+            'SELECT * FROM users WHERE id = 1;'
+        ];
+        let targetText = texts[Math.floor(Math.random() * texts.length)];
+        document.getElementById("target-text").textContent = targetText;
+        
+        const input = document.getElementById("typing-input");
+        const result = document.getElementById("result");
+
+        input.addEventListener("input", () => {
+            if (input.value === targetText) {
+                result.textContent = "✅ 正解！";
+            } else {
+                result.textContent = "";
+            }
+        });
+    </script>
+</body>
+</html>
